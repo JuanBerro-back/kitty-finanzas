@@ -103,7 +103,7 @@ async function cargarAnomalias() {
   const an = await request(`/analitica/anomalias?id_usuario=${usuario.id}`);
   $("lista-anomalias").innerHTML = an.length
     ? an.map((a) => `<li>${a.fecha} · ${a.categoria}: ${formatoMoneda.format(a.monto)} (media ${formatoMoneda.format(a.media_categoria)})</li>`).join("")
-    : "<li>Sin anomalías detectadas 🐾</li>";
+    : "<li>Sin anomalias detectadas</li>";
 }
 async function cargarMovimientos() {
   const ms = await request(`/movimientos?id_usuario=${usuario.id}`);
@@ -128,8 +128,8 @@ $("form-movimiento").addEventListener("submit", async (ev) => {
     fecha: $("f-fecha").value,
     descripcion: $("f-descripcion").value,
   };
-  if (!payload.id_categoria || !payload.fecha || payload.monto <= 0) {
-    mostrarError("Completa categoría, monto y fecha.");
+  if (!payload.id_categoria || !payload.tipo || !payload.fecha || payload.monto <= 0) {
+    mostrarError("Completa categoria, tipo, monto y fecha.");
     return;
   }
   try {
@@ -162,7 +162,7 @@ async function eliminarMovimiento(id) {
 $("kitty-fab").addEventListener("click", () => {
   $("kitty-chat").hidden = !$("kitty-chat").hidden;
   if (!$("kitty-chat").hidden && !$("chat-body").children.length) {
-    agregarMsg("kitty", "¡Miau! Soy Kitty 🐾 ¿Quieres consejos sobre ahorro, tus gastos o tu estado general?");
+    agregarMsg("kitty", "Hola! Soy Kitty. Que quieres saber sobre ahorro, tus gastos o tu estado general?");
   }
 });
 $("chat-close").addEventListener("click", () => ($("kitty-chat").hidden = true));
@@ -184,7 +184,7 @@ $("chat-form").addEventListener("submit", async (ev) => {
   try {
     const r = await request("/chatbot", { method: "POST", body: JSON.stringify({ mensaje: txt }) });
     r.respuestas.forEach((m, i) => setTimeout(() => agregarMsg("kitty", m), i * 600));
-  } catch (e) { agregarMsg("kitty", "Perdón, no pude responder. Revisa la conexión 🐾"); }
+  } catch (e) { agregarMsg("kitty", "Perdon, no pude responder. Revisa la conexion."); }
 });
 
 /* ---------- INICIO ---------- */

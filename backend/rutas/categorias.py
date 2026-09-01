@@ -14,15 +14,14 @@ def crear_categoria():
     conn = get_db()
     cur = conn.cursor()
     cur.execute(
-        "INSERT INTO categorias (id_usuario, nombre) VALUES (%s, %s)",
+        "INSERT INTO categorias (id_usuario, nombre) VALUES (%s, %s) RETURNING id",
         (id_usuario, nombre),
     )
+    nuevo_id = cur.fetchone()[0]
     conn.commit()
-    cur.execute("SELECT id, nombre FROM categorias WHERE id = %s", (cur.lastrowid,))
-    fila = cur.fetchone()
     cur.close()
     conn.close()
-    return jsonify({"id": fila[0], "nombre": fila[1]}), 201
+    return jsonify({"id": nuevo_id, "nombre": nombre}), 201
 
 
 @bp.get("/api/categorias")

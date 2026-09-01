@@ -70,20 +70,20 @@ $("form-register").addEventListener("submit", async (ev) => {
 function kittyLocal(texto) {
   const t = texto.toLowerCase();
   if (["hola", "buenas", "hey", "hi", "que tal"].some((p) => t.includes(p)))
-    return "¡Hola! Soy Kitty 🐱 Crea tu cuenta o inicia sesión para que pueda analizar tus finanzas y darte consejos con tus datos reales.";
+    return "Hola! Soy Kitty. Crea tu cuenta o inicia sesion para que pueda analizar tus finanzas y darte consejos con tus datos reales.";
   if (["gracias", "chao", "adios", "bye", "nos vemos"].some((p) => t.includes(p)))
-    return "¡De nada! Te espero dentro, me encantará ayudarte con tus finanzas. 🐾";
+    return "De nada! Te espero dentro, me encantara ayudarte con tus finanzas.";
   if (["que puedes", "ayuda", "help", "que haces", "funciones", "puedes hacer"].some((p) => t.includes(p)))
-    return "Una vez dentro del panel puedo decirte tu balance, ahorro, categoría más costosa, predicción y anomalías. Aquí todavía no tienes sesión; regístrate o entra para empezar. 🐾";
+    return "Una vez dentro del panel puedo decirte tu balance, ahorro, categoria mas costosa, prediccion y anomalias. Aqui todavia no tienes sesion; registrate o entra para empezar.";
   if (["consejo", "tip", "recomenda", "sugerencia"].some((p) => t.includes(p)))
-    return "Mini consejo: separa al menos un 20% de cada ingreso para ahorro y anota todos tus gastos. Crea tu cuenta para que te ayude con números reales. 💡";
-  return "Puedo saludarte y darte consejos generales aquí. Para ver tu situación con datos reales, crea una cuenta o inicia sesión. ¡Miau! 🐾";
+    return "Mini consejo: separa al menos un 20% de cada ingreso para ahorro y anota todos tus gastos. Crea tu cuenta para que te ayude con numeros reales.";
+  return "Puedo saludarte y darte consejos generales aqui. Para ver tu situacion con datos reales, crea una cuenta o inicia sesion.";
 }
 
 $("kitty-fab").addEventListener("click", () => {
   $("kitty-chat").hidden = !$("kitty-chat").hidden;
   if (!$("kitty-chat").hidden && !$("chat-body").children.length) {
-    agregarMsgLocal("kitty", "¡Miau! Soy Kitty 🐾 Aquí te doy consejos generales. Regístrate o inicia sesión para un análisis con tus datos.");
+    agregarMsgLocal("kitty", "Hola! Soy Kitty. Aqui te doy consejos generales. Registrate o inicia sesion para un analisis con tus datos.");
   }
 });
 $("chat-close").addEventListener("click", () => ($("kitty-chat").hidden = true));

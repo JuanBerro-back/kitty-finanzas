@@ -38,11 +38,11 @@ def registrar():
         conn.close()
         return jsonify({"error": "Ya existe una cuenta con ese email"}), 409
     cur.execute(
-        "INSERT INTO usuarios (nombre, email, password_hash) VALUES (%s, %s, %s)",
+        "INSERT INTO usuarios (nombre, email, password_hash) VALUES (%s, %s, %s) RETURNING id",
         (nombre, email, hash_password(password)),
     )
+    uid = cur.fetchone()[0]
     conn.commit()
-    uid = cur.lastrowid
     cur.close()
     conn.close()
     return jsonify({"token": make_token(uid), "usuario": {"id": uid, "nombre": nombre, "email": email}}), 201

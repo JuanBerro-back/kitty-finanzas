@@ -12,10 +12,9 @@ def crear_usuario():
         return jsonify({"error": "El nombre es obligatorio"}), 400
     conn = get_db()
     cur = conn.cursor()
-    cur.execute("INSERT INTO usuarios (nombre) VALUES (%s)", (nombre,))
-    conn.commit()
-    cur.execute("SELECT id, nombre, fecha_registro FROM usuarios WHERE id = %s", (cur.lastrowid,))
+    cur.execute("INSERT INTO usuarios (nombre) VALUES (%s) RETURNING id, nombre, fecha_registro", (nombre,))
     fila = cur.fetchone()
+    conn.commit()
     cur.close()
     conn.close()
     return jsonify({"id": fila[0], "nombre": fila[1], "fecha_registro": str(fila[2])}), 201

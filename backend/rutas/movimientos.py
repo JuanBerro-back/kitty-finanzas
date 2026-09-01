@@ -36,11 +36,11 @@ def crear_movimiento():
     cur = conn.cursor()
     cur.execute(
         "INSERT INTO ingresos_gastos (id_usuario, id_categoria, tipo, monto, fecha, descripcion) "
-        "VALUES (%s, %s, %s, %s, %s, %s)",
+        "VALUES (%s, %s, %s, %s, %s, %s) RETURNING id",
         (id_usuario, id_categoria, tipo, monto, fecha, descripcion),
     )
+    _id = cur.fetchone()[0]
     conn.commit()
-    _id = cur.lastrowid
     cur.close()
     conn.close()
     return jsonify({"id": _id}), 201
