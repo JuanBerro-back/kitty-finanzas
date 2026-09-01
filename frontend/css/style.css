@@ -258,6 +258,7 @@ th { color:var(--muted); text-transform:uppercase; font-size:.75rem; }
   display:flex; flex-direction:column; overflow:hidden; box-shadow:0 10px 0 var(--border);
   z-index:50;
 }
+.kitty-chat[hidden] { display:none; }
 .chat-header { display:flex; align-items:center; gap:.7rem; padding:.8rem 1rem; background:var(--card-2); border-bottom:2px solid var(--border); }
 .chat-header small { color:var(--muted); }
 .chat-close { margin-left:auto; background:transparent; border:0; color:var(--muted); font-size:1.1rem; cursor:pointer; }
@@ -274,4 +275,14 @@ th { color:var(--muted); text-transform:uppercase; font-size:.75rem; }
   background:var(--red); color:#fff; padding:.6rem 1.2rem; border-radius:10px; font-weight:700; font-size:.9rem; z-index:100;
 }
 
-@media (max-width:900px){ .panel, .charts { grid-template-columns:1fr; } .kitty-chat{ width:calc(100vw - 2rem); right:1rem; } }
+@media (max-width:900px){
+  .panel, .charts { grid-template-columns:1fr; }
+  .kitty-chat{ width:calc(100vw - 2rem); right:1rem; }
+}
+
+@media (max-width:480px){
+  .kitty-fab { right:.9rem; bottom:.9rem; width:58px; height:58px; }
+  .kitty-chat { right:.7rem; left:.7rem; bottom:.7rem; width:auto; max-height:calc(100dvh - 6rem); }
+  .chat-body { min-height:200px; max-height:calc(100dvh - 16rem); }
+  .toast { width:calc(100vw - 2rem); text-align:center; }
+}
