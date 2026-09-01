@@ -29,7 +29,8 @@ def resumen():
     conn.close()
     totales = {"ingresos": 0.0, "gastos": 0.0}
     for f in filas:
-        totales[f[0]] = float(f[1])
+        clave = "ingresos" if f[0] == "ingreso" else "gastos"
+        totales[clave] = float(f[1])
     balance = totales["ingresos"] - totales["gastos"]
     porcentaje_ahorro = 0.0
     if totales["ingresos"] > 0:
