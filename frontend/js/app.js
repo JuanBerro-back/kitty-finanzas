@@ -83,7 +83,7 @@ function kittyLocal(texto) {
 $("kitty-fab").addEventListener("click", () => {
   $("kitty-chat").hidden = !$("kitty-chat").hidden;
   if (!$("kitty-chat").hidden && !$("chat-body").children.length) {
-    agregarMsgLocal("kitty", "Hola! Soy Kitty. Aqui te doy consejos generales. Registrate o inicia sesion para un analisis con tus datos.");
+    agregarMsgLocal("kitty", t('kitty-greeting-auth'));
   }
 });
 $("chat-close").addEventListener("click", () => ($("kitty-chat").hidden = true));

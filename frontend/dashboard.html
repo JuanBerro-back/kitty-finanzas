@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kitty Finanzas · Dashboard</title>
+  <meta name="description" content="Kitty Finanzas - Panel de control de finanzas personales">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Nunito:wght@500;700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
+
+<body data-title-key="page-title-dash">
 
   <header class="topbar">
     <div class="topbar-left">
@@ -17,56 +22,93 @@
       <span class="topbar-brand">Kitty Finanzas</span>
     </div>
     <div class="topbar-right">
+      <!-- Controles de accesibilidad -->
+      <div class="access-controls">
+        <button class="lang-btn" data-lang="es">ES</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <span class="ctrl-sep"></span>
+        <button id="theme-toggle" title="Cambiar tema"><span id="theme-icon">☀</span></button>
+      </div>
+      <span class="ctrl-sep" style="height:1.5rem;"></span>
       <span id="user-name" class="user-chip"></span>
-      <button id="logout-btn" class="btn-ghost-sm">Cerrar sesión</button>
+      <button id="logout-btn" class="btn-ghost-sm" data-i18n="btn-cerrar-sesion">Cerrar sesión</button>
     </div>
   </header>
 
   <main class="main">
     <section class="cards">
-      <div class="card"><span class="card-label">Ingresos</span><span id="card-ingresos" class="card-num">-</span></div>
-      <div class="card"><span class="card-label">Gastos</span><span id="card-gastos" class="card-num">-</span></div>
-      <div class="card"><span class="card-label">Balance</span><span id="card-balance" class="card-num">-</span></div>
-      <div class="card"><span class="card-label">Predicción mes</span><span id="card-prediccion" class="card-num">-</span></div>
+      <div class="card">
+        <span class="card-label" data-i18n="label-ingresos">Ingresos</span>
+        <span id="card-ingresos" class="card-num">-</span>
+      </div>
+      <div class="card">
+        <span class="card-label" data-i18n="label-gastos">Gastos</span>
+        <span id="card-gastos" class="card-num">-</span>
+      </div>
+      <div class="card">
+        <span class="card-label" data-i18n="label-balance">Balance</span>
+        <span id="card-balance" class="card-num">-</span>
+      </div>
+      <div class="card">
+        <span class="card-label" data-i18n="label-prediccion">Predicción mes</span>
+        <span id="card-prediccion" class="card-num">-</span>
+      </div>
     </section>
 
     <section class="panel">
       <div class="form-box">
-        <h2>Registrar movimiento</h2>
+        <h2 data-i18n="h2-movimiento">Registrar movimiento</h2>
         <form id="form-movimiento">
-          <select id="f-categoria" required><option value="">Categoría</option></select>
-          <select id="f-tipo" required>
-            <option value="">Tipo</option>
-            <option value="gasto">Gasto</option>
-            <option value="ingreso">Ingreso</option>
+          <select id="f-categoria" required>
+            <option value="" data-i18n="opt-categoria">Categoría</option>
           </select>
-          <input id="f-monto" type="number" step="0.01" min="0" placeholder="Monto" required>
+          <select id="f-tipo" required>
+            <option value="" data-i18n="opt-tipo">Tipo</option>
+            <option value="gasto" data-i18n="opt-gasto">Gasto</option>
+            <option value="ingreso" data-i18n="opt-ingreso">Ingreso</option>
+          </select>
+          <input id="f-monto" type="number" step="0.01" min="0" data-i18n="ph-monto" placeholder="Monto" required>
           <input id="f-fecha" type="date" required>
-          <input id="f-descripcion" type="text" placeholder="Descripción (opcional)">
-          <button type="submit" class="btn-primary">Guardar</button>
+          <input id="f-descripcion" type="text" data-i18n="ph-descripcion" placeholder="Descripción (opcional)">
+          <button type="submit" class="btn-primary" data-i18n="btn-guardar">Guardar</button>
         </form>
-        <h2>Nueva categoría</h2>
+        <h2 data-i18n="h2-nueva-cat">Nueva categoría</h2>
         <form id="form-categoria" class="cat-form">
-          <input id="f-nueva-cat" type="text" placeholder="Ej: Mascotas" required>
-          <button type="submit" class="btn-secondary">Añadir</button>
+          <input id="f-nueva-cat" type="text" data-i18n="ph-nueva-cat" placeholder="Ej: Mascotas" required>
+          <button type="submit" class="btn-secondary" data-i18n="btn-aniadir">Añadir</button>
         </form>
       </div>
 
       <div class="charts">
-        <div class="chart-card"><h3>Gastos por categoría</h3><canvas id="chart-dona"></canvas></div>
-        <div class="chart-card"><h3>Ingresos vs Gastos</h3><canvas id="chart-linea"></canvas></div>
+        <div class="chart-card">
+          <h3 data-i18n="h3-dona">Gastos por categoría</h3>
+          <canvas id="chart-dona"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3 data-i18n="h3-linea">Ingresos vs Gastos</h3>
+          <canvas id="chart-linea"></canvas>
+        </div>
       </div>
     </section>
 
     <section class="anomalias">
-      <h2>Anomalias detectadas</h2>
+      <h2 data-i18n="h2-anomalias">Anomalias detectadas</h2>
       <ul id="lista-anomalias"></ul>
     </section>
 
     <section class="movimientos">
-      <h2>Movimientos recientes</h2>
+      <h2 data-i18n="h2-movimientos">Movimientos recientes</h2>
       <table>
-        <thead><tr><th>Fecha</th><th>Categoría</th><th>Tipo</th><th>Monto</th><th>Descripción</th><th></th></tr></thead>
+        <thead>
+          <tr>
+            <th data-i18n="th-fecha">Fecha</th>
+            <th data-i18n="th-categoria">Categoría</th>
+            <th data-i18n="th-tipo">Tipo</th>
+            <th data-i18n="th-monto">Monto</th>
+            <th data-i18n="th-descripcion">Descripción</th>
+            <th></th>
+          </tr>
+        </thead>
         <tbody id="tabla-movimientos"></tbody>
       </table>
     </section>
@@ -76,13 +118,13 @@
   <div id="kitty-chat" class="kitty-chat" hidden>
     <div class="chat-header">
       <span class="cat-frame md" aria-hidden="true"><span class="cat md"></span></span>
-      <div><b>Kitty</b><br><small>consejera de finanzas</small></div>
+      <div><b>Kitty</b><br><small data-i18n="consejera">consejera de finanzas</small></div>
       <button id="chat-close" class="chat-close">✕</button>
     </div>
     <div class="chat-body" id="chat-body"></div>
     <form class="chat-input" id="chat-form">
-      <input id="chat-text" type="text" placeholder="Pregúntale a Kitty..." autocomplete="off">
-      <button type="submit" class="btn-primary">➤</button>
+      <input id="chat-text" type="text" data-i18n="chat-ph" placeholder="Pregúntale a Kitty..." autocomplete="off">
+      <button type="submit" class="btn-primary">&#10148;</button>
     </form>
   </div>
   <button id="kitty-fab" class="kitty-fab" title="Hablar con Kitty">
@@ -92,6 +134,9 @@
   <p id="global-error" class="toast" hidden></p>
 
   <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/dashboard.js"></script>
+
 </body>
+
 </html>

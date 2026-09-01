@@ -103,7 +103,7 @@ async function cargarAnomalias() {
   const an = await request(`/analitica/anomalias?id_usuario=${usuario.id}`);
   $("lista-anomalias").innerHTML = an.length
     ? an.map((a) => `<li>${a.fecha} · ${a.categoria}: ${formatoMoneda.format(a.monto)} (media ${formatoMoneda.format(a.media_categoria)})</li>`).join("")
-    : "<li>Sin anomalias detectadas</li>";
+    : `<li>${t('sin-anomalias')}</li>`;
 }
 async function cargarMovimientos() {
   const ms = await request(`/movimientos?id_usuario=${usuario.id}`);
@@ -112,8 +112,8 @@ async function cargarMovimientos() {
       <td>${m.fecha}</td><td>${m.categoria}</td><td>${m.tipo}</td>
       <td class="${m.tipo === "ingreso" ? "monto-ingreso" : "monto-gasto"}">${formatoMoneda.format(m.monto)}</td>
       <td>${m.descripcion || ""}</td>
-      <td><button class="boton elim" data-id="${m.id}">Eliminar</button></td>
-    </tr>`).join("") || "<tr><td colspan='6'>Sin movimientos</td></tr>";
+      <td><button class="boton elim" data-id="${m.id}">${t('btn-eliminar')}</button></td>
+    </tr>`).join("") || `<tr><td colspan='6'>${t('sin-movimientos')}</td></tr>`;
   document.querySelectorAll(".elim").forEach((b) =>
     b.addEventListener("click", () => eliminarMovimiento(b.dataset.id)));
 }
@@ -129,7 +129,7 @@ $("form-movimiento").addEventListener("submit", async (ev) => {
     descripcion: $("f-descripcion").value,
   };
   if (!payload.id_categoria || !payload.tipo || !payload.fecha || payload.monto <= 0) {
-    mostrarError("Completa categoria, tipo, monto y fecha.");
+    mostrarError(t('err-form'));
     return;
   }
   try {
@@ -162,7 +162,7 @@ async function eliminarMovimiento(id) {
 $("kitty-fab").addEventListener("click", () => {
   $("kitty-chat").hidden = !$("kitty-chat").hidden;
   if (!$("kitty-chat").hidden && !$("chat-body").children.length) {
-    agregarMsg("kitty", "Hola! Soy Kitty. Que quieres saber sobre ahorro, tus gastos o tu estado general?");
+    agregarMsg("kitty", t('kitty-greeting-dash'));
   }
 });
 $("chat-close").addEventListener("click", () => ($("kitty-chat").hidden = true));
@@ -184,7 +184,7 @@ $("chat-form").addEventListener("submit", async (ev) => {
   try {
     const r = await request("/chatbot", { method: "POST", body: JSON.stringify({ mensaje: txt }) });
     r.respuestas.forEach((m, i) => setTimeout(() => agregarMsg("kitty", m), i * 600));
-  } catch (e) { agregarMsg("kitty", "Perdon, no pude responder. Revisa la conexion."); }
+  } catch (e) { agregarMsg("kitty", t('kitty-err')); }
 });
 
 /* ---------- INICIO ---------- */

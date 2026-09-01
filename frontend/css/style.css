@@ -11,7 +11,97 @@
   --border: #3a2d5c;
   --green: #6ee7a0;
   --red: #ff6b81;
+  --ctrl-bg: #2e2250;
+  --ctrl-border: #3a2d5c;
+  --shadow: rgba(0,0,0,.5);
+  --body-gradient-a: #24173d;
 }
+
+/* ── Tema claro ─────────────────────────────────────────────────── */
+[data-theme="light"] {
+  --bg: #f5f0ff;
+  --bg-2: #ede6ff;
+  --card: #ffffff;
+  --card-2: #f0eaff;
+  --accent: #d4720a;
+  --accent-2: #b53a29;
+  --cream: #b5880a;
+  --text: #1a1030;
+  --muted: #6b5e8a;
+  --border: #c5b8e8;
+  --green: #1a7a46;
+  --red: #c0364e;
+  --ctrl-bg: #e8e0ff;
+  --ctrl-border: #c5b8e8;
+  --shadow: rgba(0,0,0,.15);
+  --body-gradient-a: #ddd4ff;
+}
+
+[data-theme="light"] body {
+  background: radial-gradient(circle at 20% 0%, var(--body-gradient-a) 0%, var(--bg) 55%);
+}
+
+[data-theme="light"] .auth-card {
+  box-shadow: 0 0 0 3px #e8e0ff, 0 20px 40px var(--shadow);
+}
+
+[data-theme="light"] .stars {
+  opacity: 0.15;
+}
+
+/* ── Controles de accesibilidad (idioma + tema) ─────────────────── */
+.access-controls {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+.lang-btn {
+  padding: .28rem .55rem;
+  border: 2px solid var(--ctrl-border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: .75rem;
+  font-weight: 800;
+  cursor: pointer;
+  letter-spacing: .04em;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.lang-btn.active,
+.lang-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+#theme-toggle {
+  padding: .28rem .52rem;
+  border: 2px solid var(--ctrl-border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  font-size: .85rem;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+  line-height: 1;
+}
+#theme-toggle:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* separador visual entre controles */
+.ctrl-sep {
+  width: 1px;
+  height: 1.1rem;
+  background: var(--border);
+  margin: 0 .1rem;
+}
+
+
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {

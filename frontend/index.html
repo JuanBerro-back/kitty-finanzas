@@ -1,43 +1,56 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kitty Finanzas · Iniciar sesión</title>
+  <meta name="description" content="Kitty Finanzas - Tu asistente de finanzas personales">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Nunito:wght@500;700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+
+<body data-title-key="page-title-auth">
+
+  <!-- Controles de accesibilidad flotantes -->
+  <div class="access-controls" style="position:fixed;top:.8rem;right:1rem;z-index:100;">
+    <button class="lang-btn" data-lang="es">ES</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <span class="ctrl-sep"></span>
+    <button id="theme-toggle" title="Cambiar tema"><span id="theme-icon">☀</span></button>
+  </div>
 
   <div id="vista-auth" class="full-center">
     <div class="stars" aria-hidden="true"></div>
     <div class="auth-card">
       <div class="mascot-bounce">
         <span class="cat-frame xl" aria-hidden="true"><span class="cat xl"></span></span>
-        <div class="speech-bubble">Bienvenido a tus finanzas</div>
+        <div class="speech-bubble" data-i18n="speech-bubble">Bienvenido a tus finanzas</div>
       </div>
       <h1 class="brand">Kitty <span class="brand-accent">Finanzas</span></h1>
-      <p class="sub">Tu asistente financiera con estética anime</p>
+      <p class="sub" data-i18n="sub-text">Tu asistente financiera</p>
 
       <div class="tabs">
-        <button id="tab-login" class="tab is-active">Iniciar sesión</button>
-        <button id="tab-register" class="tab">Registrarse</button>
+        <button id="tab-login" class="tab is-active" data-i18n="tab-login">Iniciar sesión</button>
+        <button id="tab-register" class="tab" data-i18n="tab-register">Registrarse</button>
       </div>
 
       <div class="forms-viewport">
         <div class="forms-slider">
           <form id="form-login" class="auth-form form-slide">
-            <input id="li-email" type="email" placeholder="Correo electrónico" required>
-            <input id="li-password" type="password" placeholder="Contraseña" required>
-            <button type="submit" class="btn-primary">Entrar</button>
+            <input id="li-email" type="email" data-i18n="li-email-ph" placeholder="Correo electrónico" required>
+            <input id="li-password" type="password" data-i18n="li-password-ph" placeholder="Contraseña" required>
+            <button type="submit" class="btn-primary" data-i18n="btn-login">Entrar</button>
           </form>
 
           <form id="form-register" class="auth-form form-slide">
-            <input id="rg-nombre" type="text" placeholder="Nombre" required>
-            <input id="rg-email" type="email" placeholder="Correo electrónico" required>
-            <input id="rg-password" type="password" placeholder="Contraseña (mín. 6)" required>
-            <button type="submit" class="btn-primary">Crear cuenta</button>
+            <input id="rg-nombre" type="text" data-i18n="rg-nombre-ph" placeholder="Nombre" required>
+            <input id="rg-email" type="email" data-i18n="rg-email-ph" placeholder="Correo electrónico" required>
+            <input id="rg-password" type="password" data-i18n="rg-password-ph" placeholder="Contraseña (mín. 6)" required>
+            <button type="submit" class="btn-primary" data-i18n="btn-register">Crear cuenta</button>
           </form>
         </div>
       </div>
@@ -50,20 +63,25 @@
   <div id="kitty-chat" class="kitty-chat" hidden>
     <div class="chat-header">
       <span class="cat-frame md" aria-hidden="true"><span class="cat md"></span></span>
-      <div><b>Kitty</b><br><small>consejera de finanzas</small></div>
+      <div><b>Kitty</b><br><small data-i18n="consejera">consejera de finanzas</small></div>
       <button id="chat-close" class="chat-close">✕</button>
     </div>
     <div class="chat-body" id="chat-body"></div>
     <form class="chat-input" id="chat-form">
-      <input id="chat-text" type="text" placeholder="Pregúntale a Kitty..." autocomplete="off">
-      <button type="submit" class="btn-primary">➤</button>
+      <input id="chat-text" type="text" data-i18n="chat-ph" placeholder="Pregúntale a Kitty..." autocomplete="off">
+      <button type="submit" class="btn-primary">&#10148;</button>
     </form>
   </div>
   <button id="kitty-fab" class="kitty-fab" title="Hablar con Kitty">
     <span class="cat-frame fab" aria-hidden="true"><span class="cat fab"></span></span>
   </button>
 
+  <p id="auth-error-toast" class="toast" hidden></p>
+
   <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/app.js"></script>
+
 </body>
+
 </html>
