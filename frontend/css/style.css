@@ -1,0 +1,187 @@
+:root {
+  --bg: #0f0a1e;
+  --bg-2: #1a1130;
+  --card: #241a3d;
+  --card-2: #2e2250;
+  --accent: #fd9132;
+  --accent-2: #d14835;
+  --cream: #fee085;
+  --text: #f3edff;
+  --muted: #b8acd6;
+  --border: #3a2d5c;
+  --green: #6ee7a0;
+  --red: #ff6b81;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Nunito", sans-serif;
+  background: radial-gradient(circle at 20% 0%, #24173d 0%, var(--bg) 55%);
+  color: var(--text);
+  min-height: 100vh;
+}
+.full-center { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1rem; position: relative; overflow: hidden; }
+
+/* estrellitas pixel */
+.stars {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    radial-gradient(1.5px 1.5px at 20px 30px, #fff 50%, transparent 50%),
+    radial-gradient(2px 2px at 120px 80px, #fff 50%, transparent 50%),
+    radial-gradient(1.5px 1.5px at 240px 20px, #fee085 50%, transparent 50%),
+    radial-gradient(2px 2px at 320px 140px, #fff 50%, transparent 50%),
+    radial-gradient(1.5px 1.5px at 450px 60px, #fff 50%, transparent 50%);
+  background-size: 500px 200px;
+  animation: twinkle 4s ease-in-out infinite;
+}
+@keyframes twinkle { 0%,100% {opacity:.3} 50% {opacity:1} }
+
+.auth-card {
+  background: var(--card);
+  border: 3px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem 2.2rem;
+  width: 100%; max-width: 420px;
+  box-shadow: 0 0 0 3px #0f0a1e, 0 20px 40px rgba(0,0,0,.5);
+  position: relative; z-index: 1;
+  text-align: center;
+}
+.mascot-bounce { display:flex; align-items:center; justify-content:center; flex-direction:column; gap:.6rem; }
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+/* ===== gato pixel naranja (CSS box-shadow) ===== */
+.cat-frame {
+  position: relative; display:inline-block; overflow:hidden; line-height:0; font-size:0; flex:none;
+}
+.cat-frame.xl { width:115px; height:130px; animation: bounce 2.4s ease-in-out infinite; }
+.cat-frame.sm { width:39px; height:44px; }
+.cat-frame.md { width:46px; height:52px; }
+.cat-frame.fab { width:51px; height:58px; animation: bounce 2s ease-in-out infinite; }
+.cat { position:absolute; top:0; left:0; width:1px; height:1px; }
+.cat.xl { zoom:5; } .cat.sm { zoom:1.7; } .cat.md { zoom:2; } .cat.fab { zoom:2.2; }
+.cat { box-shadow: 5px 0px #8a4a12, 6px 0px #8a4a12, 19px 0px #8a4a12, 20px 0px #8a4a12, 4px 1px #8a4a12, 5px 1px #ff9a2a, 6px 1px #ff9a2a, 7px 1px #8a4a12, 9px 1px #8a4a12, 10px 1px #8a4a12, 11px 1px #8a4a12, 12px 1px #8a4a12, 13px 1px #8a4a12, 14px 1px #8a4a12, 15px 1px #8a4a12, 16px 1px #8a4a12, 18px 1px #8a4a12, 18px 1px #ff9a2a, 19px 1px #ff9a2a, 20px 1px #ff9a2a, 21px 1px #8a4a12, 4px 2px #8a4a12, 5px 2px #ff9a2a, 6px 2px #ffe1be, 7px 2px #ff9a2a, 8px 2px #8a4a12, 9px 2px #ff9a2a, 10px 2px #ff9a2a, 11px 2px #ff9a2a, 12px 2px #ff9a2a, 13px 2px #ff9a2a, 14px 2px #ff9a2a, 15px 2px #ff9a2a, 16px 2px #ff9a2a, 17px 2px #8a4a12, 18px 2px #ff9a2a, 19px 2px #ffe1be, 20px 2px #ff9a2a, 21px 2px #8a4a12, 4px 3px #8a4a12, 5px 3px #ff9a2a, 6px 3px #ffe1be, 7px 3px #ff9a2a, 8px 3px #ff9a2a, 9px 3px #ff9a2a, 10px 3px #ff9a2a, 11px 3px #ff9a2a, 12px 3px #ff9a2a, 13px 3px #ff9a2a, 14px 3px #ff9a2a, 15px 3px #ff9a2a, 16px 3px #ff9a2a, 17px 3px #ff9a2a, 18px 3px #ff9a2a, 19px 3px #ffe1be, 20px 3px #ff9a2a, 21px 3px #8a4a12, 4px 4px #8a4a12, 5px 4px #ff9a2a, 6px 4px #ff9a2a, 7px 4px #ff9a2a, 8px 4px #ff9a2a, 9px 4px #ff9a2a, 10px 4px #ff9a2a, 11px 4px #ff9a2a, 12px 4px #ff9a2a, 13px 4px #ff9a2a, 14px 4px #ff9a2a, 15px 4px #ff9a2a, 16px 4px #ff9a2a, 17px 4px #ff9a2a, 18px 4px #ff9a2a, 19px 4px #ff9a2a, 20px 4px #ff9a2a, 21px 4px #8a4a12, 5px 5px #8a4a12, 6px 5px #ff9a2a, 7px 5px #ff9a2a, 8px 5px #ff9a2a, 9px 5px #ff9a2a, 10px 5px #ff9a2a, 11px 5px #ff9a2a, 12px 5px #ff9a2a, 13px 5px #ff9a2a, 14px 5px #ff9a2a, 15px 5px #ff9a2a, 16px 5px #ff9a2a, 17px 5px #ff9a2a, 18px 5px #ff9a2a, 19px 5px #ff9a2a, 20px 5px #8a4a12, 4px 6px #8a4a12, 5px 6px #ff9a2a, 6px 6px #ff9a2a, 7px 6px #ff9a2a, 8px 6px #ff9a2a, 9px 6px #ff9a2a, 10px 6px #ff9a2a, 11px 6px #ff9a2a, 12px 6px #ff9a2a, 13px 6px #ff9a2a, 14px 6px #ff9a2a, 15px 6px #ff9a2a, 16px 6px #ff9a2a, 17px 6px #ff9a2a, 18px 6px #ff9a2a, 19px 6px #ff9a2a, 20px 6px #ff9a2a, 21px 6px #8a4a12, 4px 7px #8a4a12, 5px 7px #ff9a2a, 6px 7px #ff9a2a, 7px 7px #ff9a2a, 8px 7px #8a4a12, 9px 7px #8a4a12, 10px 7px #ff9a2a, 11px 7px #ff9a2a, 12px 7px #ff9a2a, 13px 7px #ff9a2a, 14px 7px #ff9a2a, 15px 7px #ff9a2a, 16px 7px #8a4a12, 17px 7px #8a4a12, 18px 7px #ff9a2a, 19px 7px #ff9a2a, 20px 7px #ff9a2a, 21px 7px #8a4a12, 3px 8px #8a4a12, 4px 8px #8a4a12, 5px 8px #ff9a2a, 6px 8px #ff9a2a, 7px 8px #ff9a2a, 8px 8px #8a4a12, 9px 8px #8a4a12, 10px 8px #ff9a2a, 11px 8px #ff9a2a, 12px 8px #ff9a2a, 13px 8px #ff9a2a, 14px 8px #ff9a2a, 15px 8px #ff9a2a, 16px 8px #8a4a12, 17px 8px #8a4a12, 18px 8px #ff9a2a, 19px 8px #ff9a2a, 20px 8px #ff9a2a, 21px 8px #8a4a12, 22px 8px #8a4a12, 4px 9px #8a4a12, 5px 9px #ff9a2a, 6px 9px #ff8f8f, 7px 9px #ff8f8f, 8px 9px #ff9a2a, 9px 9px #ff9a2a, 10px 9px #ff9a2a, 11px 9px #8a4a12, 12px 9px #8a4a12, 13px 9px #8a4a12, 14px 9px #8a4a12, 15px 9px #ff9a2a, 16px 9px #ff9a2a, 17px 9px #ff9a2a, 18px 9px #ff8f8f, 19px 9px #ff8f8f, 20px 9px #ff9a2a, 21px 9px #8a4a12, 3px 10px #8a4a12, 4px 10px #8a4a12, 5px 10px #ff9a2a, 6px 10px #ff9a2a, 7px 10px #ff9a2a, 8px 10px #ff9a2a, 9px 10px #ff9a2a, 10px 10px #ff9a2a, 11px 10px #ff9a2a, 12px 10px #8a4a12, 13px 10px #8a4a12, 14px 10px #ff9a2a, 15px 10px #ff9a2a, 16px 10px #ff9a2a, 17px 10px #ff9a2a, 18px 10px #ff9a2a, 19px 10px #ff9a2a, 20px 10px #ff9a2a, 21px 10px #8a4a12, 22px 10px #8a4a12, 5px 11px #8a4a12, 6px 11px #ff9a2a, 7px 11px #ff9a2a, 8px 11px #ff9a2a, 9px 11px #ff9a2a, 10px 11px #ff9a2a, 11px 11px #ff9a2a, 12px 11px #ff9a2a, 13px 11px #ff9a2a, 14px 11px #ff9a2a, 15px 11px #ff9a2a, 16px 11px #ff9a2a, 17px 11px #ff9a2a, 18px 11px #ff9a2a, 19px 11px #ff9a2a, 20px 11px #8a4a12, 4px 12px #8a4a12, 5px 12px #ff9a2a, 6px 12px #ff9a2a, 7px 12px #8a4a12, 8px 12px #8a4a12, 9px 12px #8a4a12, 10px 12px #ff9a2a, 11px 12px #ff9a2a, 12px 12px #ff9a2a, 13px 12px #ff9a2a, 14px 12px #ff9a2a, 15px 12px #ff9a2a, 16px 12px #8a4a12, 17px 12px #8a4a12, 18px 12px #8a4a12, 19px 12px #ff9a2a, 20px 12px #ff9a2a, 21px 12px #8a4a12, 4px 13px #8a4a12, 5px 13px #ff9a2a, 6px 13px #8a4a12, 7px 13px #ff9a2a, 8px 13px #ff9a2a, 9px 13px #ff9a2a, 10px 13px #8a4a12, 11px 13px #ff9a2a, 12px 13px #ff9a2a, 13px 13px #ff9a2a, 14px 13px #ff9a2a, 15px 13px #8a4a12, 16px 13px #ff9a2a, 17px 13px #ff9a2a, 18px 13px #ff9a2a, 19px 13px #8a4a12, 20px 13px #ff9a2a, 21px 13px #8a4a12, 4px 14px #8a4a12, 5px 14px #ff9a2a, 6px 14px #8a4a12, 7px 14px #ff9a2a, 8px 14px #ff9a2a, 9px 14px #ff9a2a, 10px 14px #8a4a12, 11px 14px #ff9a2a, 12px 14px #ff9a2a, 13px 14px #ff9a2a, 14px 14px #ff9a2a, 15px 14px #8a4a12, 16px 14px #ff9a2a, 17px 14px #ff9a2a, 18px 14px #ff9a2a, 19px 14px #8a4a12, 20px 14px #ff9a2a, 21px 14px #8a4a12, 3px 15px #8a4a12, 4px 15px #ff9a2a, 5px 15px #ff9a2a, 6px 15px #ff9a2a, 7px 15px #8a4a12, 8px 15px #8a4a12, 9px 15px #8a4a12, 10px 15px #ff9a2a, 11px 15px #ff9a2a, 12px 15px #ff9a2a, 13px 15px #ff9a2a, 14px 15px #ff9a2a, 15px 15px #ff9a2a, 16px 15px #8a4a12, 17px 15px #8a4a12, 18px 15px #8a4a12, 19px 15px #ff9a2a, 20px 15px #ff9a2a, 21px 15px #ff9a2a, 22px 15px #8a4a12, 3px 16px #8a4a12, 4px 16px #ff9a2a, 5px 16px #ff9a2a, 6px 16px #ff9a2a, 7px 16px #ff9a2a, 8px 16px #ff9a2a, 9px 16px #ff9a2a, 10px 16px #ff9a2a, 11px 16px #ff9a2a, 12px 16px #ff9a2a, 13px 16px #ff9a2a, 14px 16px #ff9a2a, 15px 16px #ff9a2a, 16px 16px #ff9a2a, 17px 16px #ff9a2a, 18px 16px #ff9a2a, 19px 16px #ff9a2a, 20px 16px #ff9a2a, 21px 16px #ff9a2a, 22px 16px #8a4a12, 3px 17px #8a4a12, 4px 17px #ff9a2a, 5px 17px #ff9a2a, 6px 17px #ff9a2a, 7px 17px #ff9a2a, 8px 17px #ff9a2a, 9px 17px #ff9a2a, 10px 17px #ff9a2a, 11px 17px #ff9a2a, 12px 17px #ff9a2a, 13px 17px #ff9a2a, 14px 17px #ff9a2a, 15px 17px #ff9a2a, 16px 17px #ff9a2a, 17px 17px #ff9a2a, 18px 17px #ff9a2a, 19px 17px #ff9a2a, 20px 17px #ff9a2a, 21px 17px #ff9a2a, 22px 17px #8a4a12, 2px 18px #8a4a12, 3px 18px #8a4a12, 4px 18px #ff9a2a, 5px 18px #ff9a2a, 6px 18px #ff9a2a, 7px 18px #ff9a2a, 8px 18px #ff9a2a, 9px 18px #ff9a2a, 10px 18px #ff9a2a, 11px 18px #ff9a2a, 12px 18px #ff9a2a, 13px 18px #ff9a2a, 14px 18px #ff9a2a, 15px 18px #ff9a2a, 16px 18px #ff9a2a, 17px 18px #ff9a2a, 18px 18px #ff9a2a, 19px 18px #ff9a2a, 20px 18px #ff9a2a, 21px 18px #ff9a2a, 22px 18px #8a4a12, 1px 19px #8a4a12, 2px 19px #ff9a2a, 3px 19px #8a4a12, 4px 19px #ff9a2a, 5px 19px #ff9a2a, 6px 19px #ff9a2a, 7px 19px #8a4a12, 8px 19px #8a4a12, 9px 19px #8a4a12, 10px 19px #ff9a2a, 11px 19px #ff9a2a, 12px 19px #ff9a2a, 13px 19px #ff9a2a, 14px 19px #ff9a2a, 15px 19px #ff9a2a, 16px 19px #8a4a12, 17px 19px #8a4a12, 18px 19px #8a4a12, 19px 19px #ff9a2a, 20px 19px #ff9a2a, 21px 19px #ff9a2a, 22px 19px #8a4a12, 0px 20px #8a4a12, 1px 20px #ff9a2a, 2px 20px #ff9a2a, 3px 20px #ff9a2a, 4px 20px #8a4a12, 5px 20px #ff9a2a, 6px 20px #8a4a12, 7px 20px #ff9a2a, 8px 20px #ff9a2a, 9px 20px #ff9a2a, 10px 20px #8a4a12, 11px 20px #ff9a2a, 12px 20px #ff9a2a, 13px 20px #ff9a2a, 14px 20px #ff9a2a, 15px 20px #8a4a12, 16px 20px #ff9a2a, 17px 20px #ff9a2a, 18px 20px #ff9a2a, 19px 20px #8a4a12, 20px 20px #ff9a2a, 21px 20px #8a4a12, 0px 21px #8a4a12, 1px 21px #ff9a2a, 2px 21px #ff9a2a, 3px 21px #8a4a12, 5px 21px #8a4a12, 6px 21px #8a4a12, 7px 21px #ff9a2a, 8px 21px #ff9a2a, 9px 21px #ff9a2a, 10px 21px #8a4a12, 11px 21px #8a4a12, 12px 21px #8a4a12, 13px 21px #8a4a12, 14px 21px #8a4a12, 15px 21px #8a4a12, 16px 21px #ff9a2a, 17px 21px #ff9a2a, 18px 21px #ff9a2a, 19px 21px #8a4a12, 20px 21px #8a4a12, 21px 21px #8a4a12, 0px 22px #8a4a12, 1px 22px #ff9a2a, 2px 22px #ff9a2a, 3px 22px #8a4a12, 4px 22px #8a4a12, 7px 22px #8a4a12, 8px 22px #8a4a12, 9px 22px #8a4a12, 16px 22px #8a4a12, 17px 22px #8a4a12, 18px 22px #8a4a12, 0px 23px #8a4a12, 1px 23px #ff9a2a, 2px 23px #ff9a2a, 3px 23px #ffe1be, 4px 23px #ffe1be, 5px 23px #8a4a12, 1px 24px #8a4a12, 2px 24px #ff9a2a, 3px 24px #ffe1be, 4px 24px #ffe1be, 5px 24px #8a4a12, 2px 25px #8a4a12, 3px 25px #8a4a12, 4px 25px #8a4a12; }
+.speech-bubble {
+  background: var(--card-2); border:2px solid var(--border); border-radius: 12px;
+  padding: .4rem .8rem; font-size:.85rem; color: var(--cream);
+}
+.brand { font-family:"Fraunces", serif; font-weight:900; font-size:1.9rem; margin-top:.4rem; }
+.brand-accent { color: var(--accent); }
+.sub { color: var(--muted); margin:.3rem 0 1.2rem; font-size:.9rem; }
+
+.tabs { display:flex; margin-bottom:1.2rem; border:2px solid var(--border); border-radius: 10px; overflow:hidden; }
+.tab { flex:1; padding:.6rem; background:transparent; color:var(--muted); border:0; cursor:pointer; font-weight:700; font-family:inherit; }
+.tab.is-active { background: var(--accent); color:#2a1505; }
+
+.auth-form { display:flex; flex-direction:column; gap:.7rem; text-align:left; }
+.auth-form input { width:100%; }
+
+/* transición entre login y registro */
+.forms-viewport { overflow:hidden; }
+.forms-slider {
+  display:flex;
+  width:200%;
+  transition:transform .5s cubic-bezier(.4,0,.2,1);
+}
+.form-slide { flex:0 0 50%; min-width:50%; }
+.forms-slider.mostrar-registro { transform:translateX(-50%); }
+
+
+input, select {
+  padding: .65rem .8rem; border:2px solid var(--border); border-radius: 8px;
+  background: var(--bg-2); color: var(--text); font-family:inherit; font-size:.9rem; outline:none;
+}
+input:focus, select:focus { border-color: var(--accent); }
+input::placeholder { color: var(--muted); }
+
+.btn-primary {
+  padding:.7rem; border:0; border-radius:8px; background:var(--accent); color:#2a1505;
+  font-weight:800; font-family:inherit; cursor:pointer; font-size:.95rem;
+  transition:.15s;
+}
+.btn-primary:hover { background:var(--cream); }
+.btn-secondary {
+  padding:.6rem .9rem; border:2px solid var(--accent); background:transparent; color:var(--accent);
+  border-radius:8px; font-weight:700; cursor:pointer; font-family:inherit;
+}
+.auth-error { color: var(--red); margin-top:.8rem; font-size:.85rem; font-weight:700; }
+.cat-form { display:flex; gap:.5rem; margin-top:.5rem; }
+
+/* ===== vista app ===== */
+.topbar {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:.8rem 1.5rem; background: var(--card); border-bottom:3px solid var(--border);
+  position:sticky; top:0; z-index:20;
+}
+.topbar-left, .topbar-right { display:flex; align-items:center; gap:.7rem; }
+.topbar-brand { font-family:"Fraunces",serif; font-weight:900; font-size:1.2rem; color:var(--accent); }
+.user-chip {
+  background:var(--card-2); border:2px solid var(--border); border-radius:20px;
+  padding:.35rem .9rem; font-size:.85rem; font-weight:700;
+}
+.btn-ghost-sm {
+  padding:.4rem .8rem; border:2px solid var(--red); color:var(--red); background:transparent;
+  border-radius:8px; cursor:pointer; font-weight:700; font-family:inherit;
+}
+
+.main { padding: 1.5rem; max-width: 1100px; margin: 0 auto; }
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; margin-bottom:1.5rem; }
+.card {
+  background:var(--card); border:2px solid var(--border); border-radius:14px; padding:1rem 1.2rem;
+  box-shadow: 0 4px 0 var(--border);
+}
+.card-label { display:block; color:var(--muted); font-size:.8rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; }
+.card-num { display:block; font-size:1.5rem; font-weight:800; margin-top:.3rem; color:var(--cream); }
+
+.panel { display:grid; grid-template-columns: 1fr 2fr; gap:1.5rem; }
+.form-box, .chart-card, .anomalias, .movimientos {
+  background:var(--card); border:2px solid var(--border); border-radius:14px; padding:1.4rem;
+  box-shadow: 0 4px 0 var(--border);
+}
+.form-box h2 { font-size:1rem; margin-bottom:.8rem; color:var(--accent); font-family:"Fraunces",serif; }
+.form-box h2:not(:first-child) { margin-top:1.2rem; }
+#form-movimiento { display:flex; flex-direction:column; gap:.6rem; }
+#form-categoria label, .cat-form input { flex:1; }
+.charts { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
+.chart-card h3 { font-size:.9rem; margin-bottom:.8rem; color:var(--muted); }
+
+.anomalias, .movimientos { margin-top:1.5rem; }
+.anomalias h2, .movimientos h2 { font-size:1.05rem; margin-bottom:.8rem; color:var(--accent); font-family:"Fraunces",serif; }
+.anomalias ul { list-style:none; }
+.anomalias li { padding:.6rem; border-left:4px solid var(--red); background:var(--card-2); margin-bottom:.4rem; font-size:.9rem; }
+table { width:100%; border-collapse:collapse; margin-top:.6rem; }
+th, td { padding:.6rem; border-bottom:1px solid var(--border); text-align:left; font-size:.87rem; }
+th { color:var(--muted); text-transform:uppercase; font-size:.75rem; }
+.monto-ingreso { color:var(--green); font-weight:700; }
+.monto-gasto { color:var(--red); font-weight:700; }
+.boton { padding:.3rem .6rem; border:0; border-radius:6px; cursor:pointer; font-size:.8rem; font-weight:700; }
+.elim { background:var(--red); color:#fff; }
+
+/* ===== bot chat ===== */
+.kitty-fab {
+  position:fixed; right:1.4rem; bottom:1.4rem; width:70px; height:70px; border-radius:50%;
+  background:var(--card-2); border:3px solid var(--accent); cursor:pointer;
+  display:flex; align-items:center; justify-content:center; box-shadow:0 6px 0 var(--border);
+}
+.kitty-chat {
+  position:fixed; right:1.4rem; bottom:1.4rem; width:340px; max-height:520px;
+  background:var(--card); border:3px solid var(--border); border-radius:18px;
+  display:flex; flex-direction:column; overflow:hidden; box-shadow:0 10px 0 var(--border);
+  z-index:50;
+}
+.chat-header { display:flex; align-items:center; gap:.7rem; padding:.8rem 1rem; background:var(--card-2); border-bottom:2px solid var(--border); }
+.chat-header small { color:var(--muted); }
+.chat-close { margin-left:auto; background:transparent; border:0; color:var(--muted); font-size:1.1rem; cursor:pointer; }
+.chat-body { flex:1; overflow-y:auto; padding:1rem; display:flex; flex-direction:column; gap:.6rem; min-height:260px; }
+.msg { max-width:85%; padding:.55rem .8rem; border-radius:12px; font-size:.87rem; line-height:1.35; }
+.msg.kitty { background:var(--card-2); align-self:flex-start; border-top-left-radius:2px; }
+.msg.user { background:var(--accent); color:#2a1505; align-self:flex-end; border-top-right-radius:2px; font-weight:700; }
+.chat-input { display:flex; gap:.5rem; padding:.7rem; border-top:2px solid var(--border); background:var(--bg-2); }
+.chat-input input { flex:1; }
+.chat-input button { padding:.6rem .9rem; }
+
+.toast {
+  position:fixed; top:1rem; left:50%; transform:translateX(-50%);
+  background:var(--red); color:#fff; padding:.6rem 1.2rem; border-radius:10px; font-weight:700; font-size:.9rem; z-index:100;
+}
+
+@media (max-width:900px){ .panel, .charts { grid-template-columns:1fr; } .kitty-chat{ width:calc(100vw - 2rem); right:1rem; } }

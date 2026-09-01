@@ -1,0 +1,23 @@
+# Entorno virtual
+backend/venv/
+venv/
+
+# Caché de Python
+__pycache__/
+*.pyc
+
+# Credenciales y secretos
+*.env
+.env
+client_secret*.json
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Render / datos locales
+*.sqlite3

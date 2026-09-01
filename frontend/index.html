@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kitty Finanzas · Iniciar sesión</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div id="vista-auth" class="full-center">
+    <div class="stars" aria-hidden="true"></div>
+    <div class="auth-card">
+      <div class="mascot-bounce">
+        <span class="cat-frame xl" aria-hidden="true"><span class="cat xl"></span></span>
+        <div class="speech-bubble">¡Miau! Bienvenido a tus finanzas 🐾</div>
+      </div>
+      <h1 class="brand">Kitty <span class="brand-accent">Finanzas</span></h1>
+      <p class="sub">Tu asistente financiera con estética anime</p>
+
+      <div class="tabs">
+        <button id="tab-login" class="tab is-active">Iniciar sesión</button>
+        <button id="tab-register" class="tab">Registrarse</button>
+      </div>
+
+      <div class="forms-viewport">
+        <div class="forms-slider">
+          <form id="form-login" class="auth-form form-slide">
+            <input id="li-email" type="email" placeholder="Correo electrónico" required>
+            <input id="li-password" type="password" placeholder="Contraseña" required>
+            <button type="submit" class="btn-primary">Entrar</button>
+          </form>
+
+          <form id="form-register" class="auth-form form-slide">
+            <input id="rg-nombre" type="text" placeholder="Nombre" required>
+            <input id="rg-email" type="email" placeholder="Correo electrónico" required>
+            <input id="rg-password" type="password" placeholder="Contraseña (mín. 6)" required>
+            <button type="submit" class="btn-primary">Crear cuenta</button>
+          </form>
+        </div>
+      </div>
+
+      <p id="auth-error" class="auth-error" hidden></p>
+    </div>
+  </div>
+
+  <!-- CHATBOT KITTY -->
+  <div id="kitty-chat" class="kitty-chat" hidden>
+    <div class="chat-header">
+      <span class="cat-frame md" aria-hidden="true"><span class="cat md"></span></span>
+      <div><b>Kitty</b><br><small>consejera de finanzas</small></div>
+      <button id="chat-close" class="chat-close">✕</button>
+    </div>
+    <div class="chat-body" id="chat-body"></div>
+    <form class="chat-input" id="chat-form">
+      <input id="chat-text" type="text" placeholder="Pregúntale a Kitty..." autocomplete="off">
+      <button type="submit" class="btn-primary">➤</button>
+    </form>
+  </div>
+  <button id="kitty-fab" class="kitty-fab" title="Hablar con Kitty">
+    <span class="cat-frame fab" aria-hidden="true"><span class="cat fab"></span></span>
+  </button>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

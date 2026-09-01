@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kitty Finanzas · Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <span class="cat-frame sm" aria-hidden="true"><span class="cat sm"></span></span>
+      <span class="topbar-brand">Kitty Finanzas</span>
+    </div>
+    <div class="topbar-right">
+      <span id="user-name" class="user-chip"></span>
+      <button id="logout-btn" class="btn-ghost-sm">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="cards">
+      <div class="card"><span class="card-label">Ingresos</span><span id="card-ingresos" class="card-num">-</span></div>
+      <div class="card"><span class="card-label">Gastos</span><span id="card-gastos" class="card-num">-</span></div>
+      <div class="card"><span class="card-label">Balance</span><span id="card-balance" class="card-num">-</span></div>
+      <div class="card"><span class="card-label">Predicción mes</span><span id="card-prediccion" class="card-num">-</span></div>
+    </section>
+
+    <section class="panel">
+      <div class="form-box">
+        <h2>Registrar movimiento</h2>
+        <form id="form-movimiento">
+          <select id="f-categoria" required><option value="">Categoría</option></select>
+          <select id="f-tipo" required>
+            <option value="gasto">Gasto</option>
+            <option value="ingreso">Ingreso</option>
+          </select>
+          <input id="f-monto" type="number" step="0.01" min="0" placeholder="Monto" required>
+          <input id="f-fecha" type="date" required>
+          <input id="f-descripcion" type="text" placeholder="Descripción (opcional)">
+          <button type="submit" class="btn-primary">Guardar</button>
+        </form>
+        <h2>Nueva categoría</h2>
+        <form id="form-categoria" class="cat-form">
+          <input id="f-nueva-cat" type="text" placeholder="Ej: Mascotas" required>
+          <button type="submit" class="btn-secondary">Añadir</button>
+        </form>
+      </div>
+
+      <div class="charts">
+        <div class="chart-card"><h3>Gastos por categoría</h3><canvas id="chart-dona"></canvas></div>
+        <div class="chart-card"><h3>Ingresos vs Gastos</h3><canvas id="chart-linea"></canvas></div>
+      </div>
+    </section>
+
+    <section class="anomalias">
+      <h2>🐾 Anomalías detectadas</h2>
+      <ul id="lista-anomalias"></ul>
+    </section>
+
+    <section class="movimientos">
+      <h2>Movimientos recientes</h2>
+      <table>
+        <thead><tr><th>Fecha</th><th>Categoría</th><th>Tipo</th><th>Monto</th><th>Descripción</th><th></th></tr></thead>
+        <tbody id="tabla-movimientos"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <!-- CHATBOT KITTY -->
+  <div id="kitty-chat" class="kitty-chat" hidden>
+    <div class="chat-header">
+      <span class="cat-frame md" aria-hidden="true"><span class="cat md"></span></span>
+      <div><b>Kitty</b><br><small>consejera de finanzas</small></div>
+      <button id="chat-close" class="chat-close">✕</button>
+    </div>
+    <div class="chat-body" id="chat-body"></div>
+    <form class="chat-input" id="chat-form">
+      <input id="chat-text" type="text" placeholder="Pregúntale a Kitty..." autocomplete="off">
+      <button type="submit" class="btn-primary">➤</button>
+    </form>
+  </div>
+  <button id="kitty-fab" class="kitty-fab" title="Hablar con Kitty">
+    <span class="cat-frame fab" aria-hidden="true"><span class="cat fab"></span></span>
+  </button>
+
+  <p id="global-error" class="toast" hidden></p>
+
+  <script src="js/config.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
