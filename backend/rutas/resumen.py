@@ -15,7 +15,7 @@ def resumen():
     if mes:
         cur.execute(
             "SELECT tipo, COALESCE(SUM(monto),0) FROM ingresos_gastos "
-            "WHERE id_usuario=%s AND DATE_FORMAT(fecha,'%%Y-%%m')=%s GROUP BY tipo",
+            "WHERE id_usuario=%s AND to_char(fecha,'YYYY-MM')=%s GROUP BY tipo",
             (id_usuario, mes),
         )
     else:

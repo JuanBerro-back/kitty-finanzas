@@ -20,7 +20,7 @@ def estadisticas():
     )
     por_categoria = [{"categoria": r[0], "total": float(r[1])} for r in cur.fetchall()]
     cur.execute(
-        "SELECT DATE_FORMAT(fecha,'%%Y-%%m') mes, "
+        "SELECT to_char(fecha,'YYYY-MM') mes, "
         "COALESCE(SUM(CASE WHEN tipo='ingreso' THEN monto END),0) ingresos, "
         "COALESCE(SUM(CASE WHEN tipo='gasto' THEN monto END),0) gastos "
         "FROM ingresos_gastos WHERE id_usuario=%s "

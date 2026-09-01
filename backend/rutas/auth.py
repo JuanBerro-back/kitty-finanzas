@@ -4,6 +4,7 @@ from flask import Blueprint, request, jsonify
 
 from modelos.db import get_db
 from modelos.auth import hash_password, check_password, make_token, login_required
+from rutas.categorias import crear_categorias_defecto
 
 bp = Blueprint("auth", __name__)
 
@@ -42,6 +43,7 @@ def registrar():
         (nombre, email, hash_password(password)),
     )
     uid = cur.fetchone()[0]
+    crear_categorias_defecto(conn, cur, uid)
     conn.commit()
     cur.close()
     conn.close()
