@@ -38,6 +38,9 @@
         <button id="tab-register" class="tab" data-i18n="tab-register">Registrarse</button>
       </div>
 
+      <div id="googleSignInDiv" class="google-auth-container" aria-label="Acceso con Google"></div>
+      <p id="google-auth-hint" class="auth-error" hidden></p>
+
       <div class="forms-viewport">
         <div class="forms-slider">
           <form id="form-login" class="auth-form form-slide">
@@ -78,6 +81,7 @@
 
   <p id="auth-error-toast" class="toast" hidden></p>
 
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <script src="js/config.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/app.js"></script>

@@ -66,6 +66,67 @@ $("form-register").addEventListener("submit", async (ev) => {
   } catch (e) { setAuthError(e.message); }
 });
 
+/* ---------- LOGIN CON GOOGLE (GIS) ---------- */
+const GOOGLE_CLIENT_ID = "61510338551-29nagua32pgrm0j3ckjo6b3d550jkcgl.apps.googleusercontent.com";
+
+function mostrarAuthError(msg) {
+  const el = $("google-auth-hint");
+  el.textContent = msg || "";
+  el.hidden = !msg;
+}
+
+function initGoogleButton() {
+  const contenedor = $("googleSignInDiv");
+  if (!contenedor) return;
+  window.google.accounts.id.initialize({
+    client_id: GOOGLE_CLIENT_ID,
+    callback: async (resp) => {
+      try {
+        if (!resp || !resp.credential) throw new Error("No se recibió credencial de Google");
+        const res = await fetch(API + "/auth/google", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id_token: resp.credential }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Error al iniciar sesión con Google");
+        guardarSesion(data);
+      } catch (e) {
+        setAuthError(e.message);
+      }
+    },
+    auto_select: false,
+    cancel_on_tap_outside: true,
+  });
+  window.google.accounts.id.renderButton(contenedor, {
+    theme: "filled_black",
+    size: "large",
+    shape: "pill",
+    text: "signin_with",
+    width: 320,
+    logo_alignment: "left",
+  });
+}
+
+function setupGoogleSignIn() {
+  if (window.google && window.google.accounts) {
+    initGoogleButton();
+    return;
+  }
+  let reintentos = 0;
+  const esperar = setInterval(() => {
+    if (window.google && window.google.accounts) {
+      clearInterval(esperar);
+      initGoogleButton();
+    } else if (++reintentos >= 20) {
+      clearInterval(esperar);
+      mostrarAuthError("Google no está disponible. Revisa tu conexión o usa email y contraseña.");
+    }
+  }, 300);
+}
+
+document.addEventListener("DOMContentLoaded", setupGoogleSignIn);
+
 /* ---------- CHATBOT LOCAL (sin sesión) ---------- */
 function kittyLocal(texto) {
   const t = texto.toLowerCase();

@@ -162,6 +162,17 @@ body {
 .tab { flex:1; padding:.6rem; background:transparent; color:var(--muted); border:0; cursor:pointer; font-weight:700; font-family:inherit; }
 .tab.is-active { background: var(--accent); color:#2a1505; }
 
+.google-auth-container {
+  display:flex;
+  justify-content:center;
+  margin: 0 0 1.2rem;
+}
+.google-auth-container iframe { max-width: 100%; }
+.google-auth-container + .forms-viewport {
+  border-top: 1px solid var(--border);
+  padding-top: 1.2rem;
+}
+
 .auth-form { display:flex; flex-direction:column; gap:.7rem; text-align:left; }
 .auth-form input { width:100%; }
 
